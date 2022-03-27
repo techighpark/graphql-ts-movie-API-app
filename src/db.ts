@@ -1,25 +1,22 @@
 import axios from "axios";
 
-const BASE_URL = "https://yts.mx/api/v2/";
-const MOVIE_LIST_URL = `${BASE_URL}list_movies.json`;
-const MOVIE_DETAIL_URL = `${BASE_URL}movie_details.json`;
+const BASE_URL: string =
+  "http://apis.data.go.kr/6260000/AirQualityInfoService/getAirQualityInfoClassifiedByStation";
+const RESULT_TYPE: string = `resultType=json`;
+const SERVICE_KEY: string = `serviceKey=sK%2B3tXRy%2Bh15TEMuv6qMBscE1G%2BJsLtm58RK2PGy6Xb3eEkbVXNVFOkgXM2WrSQAS12hL2H%2ByiNL8OwJhZOxBg%3D%3D`;
+const API_URL: string = `${BASE_URL}?${SERVICE_KEY}&${RESULT_TYPE}`;
 
-export const getMovieList = async (
-  limit?: number,
-  rating?: number
-): Promise<any> => {
+export const getAirQual = async (
+  numOfRows?: number,
+  pageNo?: number
+): Promise<[]> => {
   const {
     data: {
-      data: { movies },
+      getAirQualityInfoClassifiedByStation: { item },
     },
-  } = await axios({
-    url: MOVIE_LIST_URL,
-    params: { limit, minimum_rating: rating },
+  } = await axios(API_URL, {
+    params: { numOfRows, pageNo },
   });
-  return movies;
+  console.log(item);
+  return item;
 };
-
-export const getMovie = async (id: number): Promise<any> =>
-  await axios({ url: MOVIE_DETAIL_URL, params: { movie_id: id } }).then(
-    response => response.data.data.movie
-  );

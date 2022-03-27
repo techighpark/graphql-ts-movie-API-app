@@ -19,7 +19,7 @@ var student1 = {
     age: 21,
     gender: GenderType.Male,
     subject: "Typescript",
-    coursecomplete: false
+    coursecomplete: false,
 };
 function getStudentDetails(studentID) {
     return {
@@ -28,7 +28,7 @@ function getStudentDetails(studentID) {
         age: 21,
         gender: GenderType.Male,
         subject: "Typescript",
-        coursecomplete: false
+        coursecomplete: false,
     };
 }
 function saveStudentDetails(student) { }
@@ -69,9 +69,6 @@ var sendHello = function (message, userName) {
 sendHello();
 sendHello("Hello");
 sendHello("Hello", "tech");
-// any[]
-// Array<T>
-// Tuple
 //
 // Object Oriented Programming
 // Class
@@ -103,7 +100,7 @@ var Employee = /** @class */ (function () {
     return Employee;
 }());
 var employ1 = new Employee("tech", 34, "Developer", 20, 100);
-console.log(employ1);
+console.log(employ1.fullName);
 //
 // Access Modifiers
 // 1. Public*
@@ -111,3 +108,32 @@ console.log(employ1);
 // 3. Protected
 //
 // Getterr + Setter
+// Clean!
+var EmployeeClean = /** @class */ (function () {
+    // property
+    function EmployeeClean(_fullName, _age, _jobTitle, _hourlyRate, workingHoursPerWeek) {
+        var _this = this;
+        this._fullName = _fullName;
+        this._age = _age;
+        this._jobTitle = _jobTitle;
+        this._hourlyRate = _hourlyRate;
+        this.workingHoursPerWeek = workingHoursPerWeek;
+        // method
+        this.printEmployeeDetails = function () {
+            console.log("".concat(_this._fullName, "\uC758 \uC9C1\uC5C5\uC740 ").concat(_this._jobTitle, "\uC774\uACE0 \uC77C\uC8FC\uC77C\uC758 \uC218\uC785\uC740").concat(_this._hourlyRate * _this.workingHoursPerWeek, "\uC6D0\uC785\uB2C8\uB2E4. ").concat(_this._age));
+        };
+    }
+    Object.defineProperty(EmployeeClean.prototype, "fullName", {
+        get: function () {
+            return this._fullName;
+        },
+        set: function (value) {
+            this._fullName = value;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    return EmployeeClean;
+}());
+var cleanEmployee = new EmployeeClean("Techigh", 29, "Worker", 60, 30);
+console.log(cleanEmployee);

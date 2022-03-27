@@ -101,9 +101,6 @@ const sendHello = (message: string = "Bye", userName?: string): void => {
 sendHello();
 sendHello("Hello");
 sendHello("Hello", "tech");
-// any[]
-// Array<T>
-// Tuple
 
 //
 // Object Oriented Programming
@@ -124,7 +121,7 @@ class Employee {
     age: number,
     jobTitle: string,
     workingHoursPerWeek: number,
-    hourlyRate?: number
+    hourlyRate: number
   ) {
     this._fullName = fullName;
     this.age = age;
@@ -152,7 +149,7 @@ class Employee {
 
 let employ1 = new Employee("tech", 34, "Developer", 20, 100);
 
-console.log(employ1);
+console.log(employ1.fullName);
 
 //
 // Access Modifiers
@@ -162,3 +159,36 @@ console.log(employ1);
 
 //
 // Getterr + Setter
+
+// Clean!
+
+class EmployeeClean {
+  // property
+
+  constructor(
+    private _fullName: string,
+    private _age: number,
+    private _jobTitle: string,
+    private _hourlyRate: number,
+    public workingHoursPerWeek: number
+  ) {}
+
+  get fullName() {
+    return this._fullName;
+  }
+  set fullName(value: string) {
+    this._fullName = value;
+  }
+
+  // method
+  printEmployeeDetails = (): void => {
+    console.log(
+      `${this._fullName}의 직업은 ${this._jobTitle}이고 일주일의 수입은${
+        this._hourlyRate * this.workingHoursPerWeek
+      }원입니다. ${this._age}`
+    );
+  };
+}
+
+const cleanEmployee = new EmployeeClean("Techigh", 29, "Worker", 60, 30);
+console.log(cleanEmployee);
