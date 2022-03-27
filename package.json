@@ -16,5 +16,13 @@
   "bugs": {
     "url": "https://github.com/techighpark/ts_graphql_movie_API/issues"
   },
-  "homepage": "https://github.com/techighpark/ts_graphql_movie_API#readme"
+  "homepage": "https://github.com/techighpark/ts_graphql_movie_API#readme",
+  "dependencies": {
+    "apollo-server": "^3.6.6",
+    "apollo-server-core": "^3.6.6",
+    "apollo-server-express": "^3.6.6",
+    "axios": "^0.26.1",
+    "express": "^4.17.3",
+    "graphql": "^16.3.0"
+  }
 }
